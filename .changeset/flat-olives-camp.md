@@ -1,0 +1,5 @@
+---
+"dyor": patch
+---
+
+fixes publishing
