@@ -39,7 +39,12 @@ export function usePolkadotDapp<T>(
 }
 
 export const useApi = (chain: keyof APISlice["api"]) => {
-  return usePolkadotDapp((state) => state.api[chain]);
+  const api = usePolkadotDapp((state) => state.api[chain]);
+  if (!api)
+    throw Error(
+      `Api for '${chain}' not available, make sure it's setup correctly in PolkadotDappProvider`
+    );
+  return api;
 };
 
 /**
