@@ -1,5 +1,11 @@
 # dyor
 
+## 0.1.4
+
+### Patch Changes
+
+- c9871ba: builds library prepublishing
+
 ## 0.1.3
 
 ### Patch Changes
