@@ -1,5 +1,11 @@
 # dyor
 
+## 0.1.5
+
+### Patch Changes
+
+- 7fc304a: improves typings for useChain
+
 ## 0.1.4
 
 ### Patch Changes
