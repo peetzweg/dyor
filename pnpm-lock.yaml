@@ -4,60 +4,83 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  '@polkadot/api':
-    specifier: ^10
-    version: 10.12.4
-  '@polkadot/extension-dapp':
-    specifier: ^0.46
-    version: 0.46.9(@polkadot/api@10.12.4)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)
-  react:
-    specifier: ^18
-    version: 18.2.0
-  zustand:
-    specifier: ^4
-    version: 4.5.2(@types/react@18.2.73)(react@18.2.0)
+importers:
 
-devDependencies:
-  '@changesets/cli':
-    specifier: ^2.27.1
-    version: 2.27.1
-  '@polkadot/typegen':
-    specifier: ^10.12.4
-    version: 10.12.4
-  '@polkadot/types':
-    specifier: ^10.12.4
-    version: 10.12.4
-  '@types/react':
-    specifier: ^18.2.73
-    version: 18.2.73
-  '@types/react-dom':
-    specifier: ^18.2.22
-    version: 18.2.22
-  '@typescript-eslint/eslint-plugin':
-    specifier: ^7.4.0
-    version: 7.4.0(@typescript-eslint/parser@7.4.0)(eslint@8.57.0)(typescript@5.4.3)
-  '@typescript-eslint/parser':
-    specifier: ^7.4.0
-    version: 7.4.0(eslint@8.57.0)(typescript@5.4.3)
-  eslint:
-    specifier: ^8.57.0
-    version: 8.57.0
-  eslint-plugin-react:
-    specifier: ^7.34.1
-    version: 7.34.1(eslint@8.57.0)
-  eslint-plugin-react-hooks:
-    specifier: ^4.6.0
-    version: 4.6.0(eslint@8.57.0)
-  eslint-plugin-react-refresh:
-    specifier: ^0.4.6
-    version: 0.4.6(eslint@8.57.0)
-  tsup:
-    specifier: ^8.0.2
-    version: 8.0.2(typescript@5.4.3)
-  typescript:
-    specifier: ^5.4.3
-    version: 5.4.3
+  .:
+    devDependencies:
+      '@changesets/cli':
+        specifier: ^2.27.1
+        version: 2.27.1
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      eslint-plugin-react:
+        specifier: ^7.34.1
+        version: 7.34.1(eslint@8.57.0)
+      eslint-plugin-react-hooks:
+        specifier: ^4.6.0
+        version: 4.6.0(eslint@8.57.0)
+      eslint-plugin-react-refresh:
+        specifier: ^0.4.6
+        version: 0.4.6(eslint@8.57.0)
+      typescript:
+        specifier: ^5.4.3
+        version: 5.4.3
+
+  packages/dyor:
+    dependencies:
+      '@polkadot/api':
+        specifier: ^10
+        version: 10.12.4
+      '@polkadot/extension-dapp':
+        specifier: ^0.46
+        version: 0.46.9(@polkadot/api@10.12.4)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)
+      react:
+        specifier: ^18
+        version: 18.2.0
+      zustand:
+        specifier: ^4
+        version: 4.5.2(@types/react@18.2.73)(react@18.2.0)
+    devDependencies:
+      '@changesets/cli':
+        specifier: ^2.27.1
+        version: 2.27.1
+      '@polkadot/typegen':
+        specifier: ^10.12.4
+        version: 10.12.4
+      '@polkadot/types':
+        specifier: ^10.12.4
+        version: 10.12.4
+      '@types/react':
+        specifier: ^18.2.73
+        version: 18.2.73
+      '@types/react-dom':
+        specifier: ^18.2.22
+        version: 18.2.22
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^7.4.0
+        version: 7.4.0(@typescript-eslint/parser@7.4.0)(eslint@8.57.0)(typescript@5.4.3)
+      '@typescript-eslint/parser':
+        specifier: ^7.4.0
+        version: 7.4.0(eslint@8.57.0)(typescript@5.4.3)
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      eslint-plugin-react:
+        specifier: ^7.34.1
+        version: 7.34.1(eslint@8.57.0)
+      eslint-plugin-react-hooks:
+        specifier: ^4.6.0
+        version: 4.6.0(eslint@8.57.0)
+      eslint-plugin-react-refresh:
+        specifier: ^0.4.6
+        version: 0.4.6(eslint@8.57.0)
+      tsup:
+        specifier: ^8.0.2
+        version: 8.0.2(typescript@5.4.3)
+      typescript:
+        specifier: ^5.4.3
+        version: 5.4.3
 
 packages:
 
