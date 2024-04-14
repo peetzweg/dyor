@@ -3,7 +3,7 @@
 
 React hooks library for Polkadot SDK chains, inspired by wagmi.
 
-**This library is still under development.**
+**In the current state the package is just for fun and exploration.**
 
 <!-- [![Build Status](https://img.shields.io/github/actions/workflow/status/peetzweg/dyor/main.yml?branch=main&style=flat&colorA=000000&colorB=000000)](https://github.com/peetzweg/dyor/actions?query=workflow%3ACI) -->
 [![Build Size](https://img.shields.io/bundlephobia/minzip/dyor?label=bundle%20size&style=flat&colorA=000000&colorB=000000)](https://bundlephobia.com/result?p=dyor)
@@ -38,14 +38,11 @@ function App() {
 
 
 ```ts
-import { useApi } from 'dyor'
+import { useChain } from 'dyor'
 
 function ChainConstants() {
-  const { address } = useChain('AssetHub')
-  const { data, error, status } = useEnsName({ address })
-  if (status === 'pending') return <div>Loading ENS name</div>
-  if (status === 'error')
-    return <div>Error fetching ENS name: {error.message}</div>
-  return <div>ENS name: {data}</div>
+  const AssetHub = useChain('AssetHub')
+
+  ...
 }
 ```
