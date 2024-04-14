@@ -1,0 +1,46 @@
+{
+  "name": "dyor",
+  "version": "0.1.5",
+  "description": "",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup --dts --format cjs,esm",
+    "lint": "tsc"
+  },
+  "keywords": [
+    "dyor",
+    "react",
+    "hooks",
+    "dot",
+    "polkadot",
+    "dapps",
+    "wallet",
+    "web3"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "@polkadot/api": "^10",
+    "@polkadot/extension-dapp": "^0.46",
+    "react": "^18",
+    "zustand": "^4"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@polkadot/typegen": "^10.12.4",
+    "@polkadot/types": "^10.12.4",
+    "@types/react": "^18.2.73",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.3"
+  }
+}
