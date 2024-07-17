@@ -19,9 +19,11 @@ export const PolkadotDappProvider: React.FC<
   PolkadotDappProps & { children: ReactNode }
 > = ({ children, ...props }) => {
   const storeRef = useRef<PolkadotDappStore>();
+
   if (!storeRef.current) {
     storeRef.current = createPolkadotDappStore(props);
   }
+
   return (
     <PolkadotDappContext.Provider value={storeRef.current}>
       {children}
@@ -33,9 +35,9 @@ export function usePolkadotDapp<T>(
   selector: (state: PolkadotDappState) => T
 ): T {
   const store = useContext(PolkadotDappContext);
-  if (!store)
-    throw new Error("Missing PolkadotDappContext.Provider in the tree");
-  return useStore(store, selector);
+  // if (!store)
+  //   throw new Error("Missing PolkadotDappContext.Provider in the tree");
+  return useStore(store!, selector);
 }
 
 export const useApi = (chain: keyof APISlice["api"]) => {
@@ -56,6 +58,7 @@ export const useWallet = (): WalletSlice => {
   return usePolkadotDapp((state) => ({
     accounts: state.accounts,
     connect: state.connect,
+    disconnect: state.disconnect,
     isConnected: state.isConnected,
     isConnecting: state.isConnecting,
     selectAccount: state.selectAccount,

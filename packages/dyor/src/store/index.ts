@@ -9,7 +9,7 @@ export type PolkadotDappState = APISlice & WalletSlice;
 export type { APISlice, WalletSlice };
 
 export interface PolkadotDappProps {
-  eagerConnect: boolean;
+  eagerConnect?: boolean;
   chains: Record<string, ApiOptions>;
 }
 export type PolkadotDappStore = ReturnType<typeof createPolkadotDappStore>;

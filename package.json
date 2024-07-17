@@ -2,6 +2,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "pnpm --filter vite-react dev",
+    "watch": "pnpm run --r --filter \"./packages/**\" watch",
     "build": "pnpm run --r --filter \"./packages/**\" build",
     "lint": "tsc"
   },
