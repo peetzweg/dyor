@@ -1,5 +1,0 @@
----
-"dyor": minor
----
-
-implements `disconnect()`
