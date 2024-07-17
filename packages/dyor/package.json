@@ -8,6 +8,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsup --dts --format cjs,esm",
+    "watch": "tsup --dts --format cjs,esm --watch",
     "lint": "tsc"
   },
   "keywords": [
@@ -22,25 +23,34 @@
   ],
   "author": "",
   "license": "MIT",
+  "dependencies": {
+    "zustand": "^4.5.4"
+  },
   "peerDependencies": {
-    "@polkadot/api": "^10",
-    "@polkadot/extension-dapp": "^0.46",
-    "react": "^18",
-    "zustand": "^4"
+    "@polkadot/api": ">=12",
+    "@polkadot/extension-dapp": ">=0.49",
+    "@tanstack/react-query": ">=5",
+    "react": ">=18",
+    "typescript": ">=5"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
-    "@polkadot/typegen": "^10.12.4",
-    "@polkadot/types": "^10.12.4",
-    "@types/react": "^18.2.73",
-    "@types/react-dom": "^18.2.22",
-    "@typescript-eslint/eslint-plugin": "^7.4.0",
-    "@typescript-eslint/parser": "^7.4.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.6",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.3"
+    "@changesets/cli": "^2.27.7",
+    "@polkadot/typegen": "^12.2.1",
+    "@polkadot/types": "^12.2.1",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "eslint": "^9.7.0",
+    "eslint-plugin-react": "^7.34.4",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.8",
+    "tsup": "^8.1.1",
+    "typescript": "^5.5.3"
   }
 }

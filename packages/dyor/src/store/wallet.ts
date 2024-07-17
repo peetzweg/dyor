@@ -5,11 +5,12 @@ import { web3Accounts, web3Enable } from "@polkadot/extension-dapp";
 type InjectedAccountWithMeta = Awaited<ReturnType<typeof web3Accounts>>[0];
 export interface WalletSlice {
   accounts: InjectedAccountWithMeta[];
-  connect: () => Promise<InjectedAccountWithMeta[]>;
-  selectAccount: (address: string) => void;
   isConnecting: boolean;
   isConnected: boolean;
   selectedAccount?: InjectedAccountWithMeta;
+  connect: () => Promise<InjectedAccountWithMeta[]>;
+  disconnect: () => void;
+  selectAccount: (address: string) => void;
 }
 
 export const createWalletSlice: (
@@ -26,6 +27,15 @@ export const createWalletSlice: (
       }
       set({ isConnecting: false });
       return [];
+    };
+
+    const disconnect: WalletSlice["disconnect"] = () => {
+      set({
+        accounts: [],
+        selectAccount: undefined,
+        isConnected: false,
+        isConnecting: false,
+      });
     };
 
     const selectAccount: WalletSlice["selectAccount"] = (address) => {
@@ -48,6 +58,7 @@ export const createWalletSlice: (
       isConnecting: false,
       selectedAccount: undefined,
       connect,
+      disconnect,
       selectAccount,
     };
   };
