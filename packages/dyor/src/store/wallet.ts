@@ -20,13 +20,14 @@ export const createWalletSlice: (
     const connect: WalletSlice["connect"] = async () => {
       set({ isConnecting: true });
       const extensions = await web3Enable("Polkadot Dapp Template");
-      if (extensions.length !== 0) {
-        const accounts = await web3Accounts();
-        set({ accounts, isConnected: true });
-        return accounts;
+      if (extensions.length === 0) {
+        set({ isConnecting: false });
+        return [];
       }
-      set({ isConnecting: false });
-      return [];
+
+      const accounts = await web3Accounts();
+      set({ accounts, isConnected: true, isConnecting: false });
+      return accounts;
     };
 
     const disconnect: WalletSlice["disconnect"] = () => {
