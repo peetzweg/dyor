@@ -1,23 +1,22 @@
-/* eslint-disable no-console */
-import type { Prettify } from "../helpers.js";
 import { ApiPromise } from "@polkadot/api";
 import type { StateCreator } from "zustand";
-import type { PolkadotDappProps, PolkadotDappState } from "./index.js";
+import type { Prettify } from "../helpers.js";
+import type { Config, DyorState } from "./index.js";
 
 const createPJSAppsLink = (rpc: string) =>
   `https://polkadot.js.org/apps/?rpc=wss://${rpc}#/explorer`;
 
 // TODO does not provide useApi("Polkadot"), 'chains' prop needs to be 'as const'
 export interface APISlice {
-  api: Prettify<Record<keyof PolkadotDappProps["chains"], ApiPromise>>;
-  error: Prettify<Record<keyof PolkadotDappProps["chains"], Error | undefined>>;
-  ready: Prettify<Record<keyof PolkadotDappProps["chains"], boolean>>;
-  connected: Prettify<Record<keyof PolkadotDappProps["chains"], boolean>>;
+  api: Readonly<Record<keyof Config["chains"], ApiPromise>>;
+  error: Prettify<Record<keyof Config["chains"], Error | undefined>>;
+  ready: Prettify<Record<keyof Config["chains"], boolean>>;
+  connected: Prettify<Record<keyof Config["chains"], boolean>>;
 }
 
 export const createAPISlice: (
-  props: PolkadotDappProps
-) => StateCreator<PolkadotDappState, [], [], APISlice> = (props) => (set) => {
+  config: Readonly<Config>
+) => StateCreator<DyorState, [], [], APISlice> = (props) => (set) => {
   const api: Partial<APISlice["api"]> = {};
 
   Object.entries(props.chains).forEach(([key, options]) => {

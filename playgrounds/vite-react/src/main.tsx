@@ -1,22 +1,19 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import { PolkadotDappProvider } from 'dyor'
-import { WsProvider } from "@polkadot/api"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import { DyorProvider } from "dyor";
+import { WsProvider } from "@polkadot/api";
 
 const config = {
   AssetHub: {
-    provider: new WsProvider(
-      `wss://polkadot-asset-hub-rpc.polkadot.io`,
-    ),
+    provider: new WsProvider(`wss://polkadot-asset-hub-rpc.polkadot.io`),
   },
-} as const
+} as const;
 
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <PolkadotDappProvider chains={config} eagerConnect>
+    <DyorProvider chains={config} eagerConnect>
       <App />
-    </PolkadotDappProvider>
-  </React.StrictMode >,
-)
+    </DyorProvider>
+  </React.StrictMode>
+);

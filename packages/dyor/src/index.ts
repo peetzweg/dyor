@@ -1,7 +1,7 @@
 export {
-  PolkadotDappProvider,
-  useChain,
-  usePolkadotDapp,
+  DyorProvider,
+  useDyor,
   useWallet,
   useApi,
+  useChainDetails,
 } from "./react.js";
