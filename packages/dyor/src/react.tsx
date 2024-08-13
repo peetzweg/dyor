@@ -6,24 +6,22 @@ import type {
   APISlice,
   DyorConfig,
   DyorState,
-  PolkadotDappStore,
+  DyorStore,
   WalletSlice,
 } from "./store/index.js";
-import { createPolkadotDappStore } from "./store/index.js";
+import { createDyorStore } from "./store/index.js";
 export { useChainDetails } from "./hooks/useChainDetails.js";
 
-export const PolkadotDappContext = createContext<PolkadotDappStore | null>(
-  null
-);
+export const PolkadotDappContext = createContext<DyorStore | null>(null);
 
 export const DyorProvider: React.FC<{
   children: ReactNode;
   config: DyorConfig;
 }> = ({ children, config }) => {
-  const storeRef = useRef<PolkadotDappStore>();
+  const storeRef = useRef<DyorStore>();
 
   if (!storeRef.current) {
-    storeRef.current = createPolkadotDappStore(config);
+    storeRef.current = createDyorStore(config);
   }
 
   return (

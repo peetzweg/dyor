@@ -13,22 +13,19 @@ export interface DyorConfig {
   chains: Record<string, PJSApiOptions>;
 }
 
-export type PolkadotDappStore = ReturnType<typeof createPolkadotDappStore>;
+export interface DyorConfigReadonly {
+  eagerConnect?: boolean;
+  chains: readonly [string, PJSApiOptions];
+}
 
-const chains = {
-  Polkadot: true,
-  Kusama: true,
+const config: DyorConfigReadonly = {
+  eagerConnect: true,
+  chains: ["polkadot", {}],
 } as const;
 
-const chainsArray = [
-  ["polkadot", true],
-  ["kusama", true],
-] as const;
+export type DyorStore = ReturnType<typeof createDyorStore>;
 
-type ChainNameRecord = keyof typeof chains;
-type ChainNameArray = (typeof chainsArray)[number][0];
-
-export function createPolkadotDappStore(config: Readonly<DyorConfig>) {
+export function createDyorStore(config: Readonly<DyorConfig>) {
   return createStore<DyorState>()((...a) => ({
     ...createAPISlice(config)(...a),
     ...createWalletSlice(config)(...a),
