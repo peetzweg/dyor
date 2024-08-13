@@ -1,6 +1,9 @@
 import { useApi } from "../react.js";
+import { DyorConfig } from "../store/index.js";
 
-export function useChainDetails(chain: string) {
+export function useChainDetails<C extends DyorConfig>(
+  chain: keyof C["chains"]
+) {
   const api = useApi(chain);
   const [decimals, token] = [
     api.registry.chainDecimals[0],
