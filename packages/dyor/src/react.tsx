@@ -4,7 +4,7 @@ import React, { createContext, useContext, useRef } from "react";
 import { useStore } from "zustand";
 import type {
   APISlice,
-  Config,
+  DyorConfig,
   DyorState,
   PolkadotDappStore,
   WalletSlice,
@@ -16,14 +16,14 @@ export const PolkadotDappContext = createContext<PolkadotDappStore | null>(
   null
 );
 
-export const DyorProvider: React.FC<Config & { children: ReactNode }> = ({
-  children,
-  ...props
-}) => {
+export const DyorProvider: React.FC<{
+  children: ReactNode;
+  config: DyorConfig;
+}> = ({ children, config }) => {
   const storeRef = useRef<PolkadotDappStore>();
 
   if (!storeRef.current) {
-    storeRef.current = createPolkadotDappStore(props);
+    storeRef.current = createPolkadotDappStore(config);
   }
 
   return (

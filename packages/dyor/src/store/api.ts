@@ -1,21 +1,21 @@
 import { ApiPromise } from "@polkadot/api";
 import type { StateCreator } from "zustand";
 import type { Prettify } from "../helpers.js";
-import type { Config, DyorState } from "./index.js";
+import type { DyorConfig, DyorState } from "./index.js";
 
 const createPJSAppsLink = (rpc: string) =>
   `https://polkadot.js.org/apps/?rpc=wss://${rpc}#/explorer`;
 
 // TODO does not provide useApi("Polkadot"), 'chains' prop needs to be 'as const'
 export interface APISlice {
-  api: Readonly<Record<keyof Config["chains"], ApiPromise>>;
-  error: Prettify<Record<keyof Config["chains"], Error | undefined>>;
-  ready: Prettify<Record<keyof Config["chains"], boolean>>;
-  connected: Prettify<Record<keyof Config["chains"], boolean>>;
+  api: Prettify<Record<keyof DyorConfig["chains"], ApiPromise>>;
+  error: Prettify<Record<keyof DyorConfig["chains"], Error | undefined>>;
+  ready: Prettify<Record<keyof DyorConfig["chains"], boolean>>;
+  connected: Prettify<Record<keyof DyorConfig["chains"], boolean>>;
 }
 
 export const createAPISlice: (
-  config: Readonly<Config>
+  config: Readonly<DyorConfig>
 ) => StateCreator<DyorState, [], [], APISlice> = (props) => (set) => {
   const api: Partial<APISlice["api"]> = {};
 
