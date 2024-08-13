@@ -7,8 +7,8 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup --dts --format cjs,esm",
-    "watch": "tsup --dts --format cjs,esm --watch",
+    "build": "tsup --dts --format esm",
+    "watch": "tsup --dts --format esm --watch",
     "lint": "tsc"
   },
   "keywords": [
@@ -29,6 +29,7 @@
   "peerDependencies": {
     "@polkadot/api": ">=12",
     "@polkadot/extension-dapp": ">=0.51",
+    "@polkadot/extension-inject": "^0.51.1",
     "@tanstack/react-query": ">=5",
     "react": ">=18",
     "typescript": ">=5"

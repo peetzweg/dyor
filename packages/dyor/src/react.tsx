@@ -10,6 +10,7 @@ import {
   createWalletStore,
 } from "./store/wallet.js";
 export { useChainDetails } from "./hooks/useChainDetails.js";
+export { RequireReady } from "./helpers/RequireReady.js";
 
 // TODO here we are losing the generic type of the config
 export const DyorApiContext = createContext<ApiStore<DyorConfig> | null>(null);
@@ -31,6 +32,7 @@ export function DyorProvider<C extends DyorConfig>({
 
   if (!walletStoreRef.current) {
     walletStoreRef.current = createWalletStore(config);
+    walletStoreRef.current.getState().init();
   }
 
   return (
@@ -68,13 +70,5 @@ export function useDyorWallet<T>(selector: (state: WalletState) => T): T {
   return useStore(store, selector);
 }
 export function useWallet(): WalletState {
-  return useDyorWallet((state) => ({
-    accounts: state.accounts,
-    connect: state.connect,
-    disconnect: state.disconnect,
-    isConnected: state.isConnected,
-    isConnecting: state.isConnecting,
-    selectAccount: state.selectAccount,
-    selectedAccount: state.selectedAccount,
-  }));
+  return useDyorWallet((state) => state);
 }
