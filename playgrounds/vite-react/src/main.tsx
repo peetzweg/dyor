@@ -1,11 +1,10 @@
 import { WsProvider } from "@polkadot/api";
-import type { DyorConfig } from "dyor";
 import { DyorProvider } from "dyor";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 
-const config: DyorConfig = {
+const config = {
   chains: {
     AssetHub: {
       provider: new WsProvider(`wss://polkadot-asset-hub-rpc.polkadot.io`),
@@ -13,6 +12,8 @@ const config: DyorConfig = {
   },
   eagerConnect: true,
 } as const;
+
+export type Config = typeof config;
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

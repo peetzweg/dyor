@@ -1,7 +1,8 @@
-import { useChainDetails, useWallet } from "dyor";
+import { useApi, useChainDetails, useWallet } from "dyor";
+import type { Config } from "./main";
 
 function App() {
-  const { token, decimals } = useChainDetails("AssetHub");
+  const { token, decimals } = useChainDetails<Config>("AssetHub");
   const {
     connect,
     accounts,
@@ -10,6 +11,8 @@ function App() {
     isConnecting,
     selectedAccount,
   } = useWallet();
+  const api = useApi<Config>("AssetHub");
+  console.log({ api, token, decimals });
 
   return (
     <>
